@@ -61,7 +61,7 @@ body {
   -webkit-tap-highlight-color: #fed136; }
 
 #mainNav {
-  background-color: #000; }
+  background-color: #222222; }
   #mainNav .navbar-toggler {
     font-size: 12px;
     right: 0;
@@ -96,7 +96,7 @@ body {
     -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
     transition: padding-top 0.3s, padding-bottom 0.3s;
     border: none;
-    background-color: #000; }
+    background-color: transparent; }
     #mainNav .navbar-brand {
       font-size: 1.75em;
       -webkit-transition: all 0.3s;
@@ -455,7 +455,7 @@ section#contact {
     box-shadow: none; }
   section#contact ::-webkit-input-placeholder {
     font-weight: 700;
-    /*color: #000;*/
+    color: #000;
     font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     text-transform: uppercase; }
   section#contact :-moz-placeholder {
@@ -599,19 +599,3 @@ ul.social-buttons {
     color: #fed136;
     background-color: white; }
 
-
-input::-webkit-input-placeholder {
-color: gray !important;
-}
- 
-input:-moz-placeholder { /* Firefox 18- */
-color: gray !important;  
-}
- 
-input::-moz-placeholder {  /* Firefox 19+ */
-color: gray !important;  
-}
- 
-input:-ms-input-placeholder {  
-color: gray !important;  
-}

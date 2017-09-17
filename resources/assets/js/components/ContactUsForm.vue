@@ -1,0 +1,115 @@
+<template>	
+	<form 
+	id="contactForm" 
+	name="sentMessage"
+	@keydown="form.errors.clear($event.target.name)" 
+	@submit.prevent="onSubmit">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<input 
+				class="form-control" 
+				v-model="form.name"
+				id="name" 
+				name="name"
+				type="text" 
+				placeholder="Your Name *"/> 
+
+				<p 
+				class="help-block text-danger"
+				v-if="form.errors.has('name')"
+				v-text="form.errors.get('name')"></p>
+			</div>
+
+			<div class="form-group">
+				<input 
+				v-model="form.email"
+				class="form-control"
+				id="email" 
+				name="email" 
+				placeholder="Your Email *" />
+
+				<p 
+				class="help-block text-danger"
+				v-if="form.errors.has('email')"
+				v-text="form.errors.get('email')"></p>
+			</div>
+
+			<div class="form-group">
+				<input 
+				v-model="form.phone"
+				class="form-control" 
+				id="phone"
+				name="phone"
+				placeholder="Your Phone *"/> 
+
+				<p 
+				class="help-block text-danger"
+				v-if="form.errors.has('phone')"
+				v-text="form.errors.get('phone')"></p>
+			</div>
+
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<textarea 
+				v-model="form.message"
+				name="message" 
+				id="message" 
+				cols="30" 
+				rows="10" 
+				class="form-control"
+				placeholder="Your message Goes here"></textarea>
+
+				<p 
+				class="help-block text-danger"
+				v-if="form.errors.has('message')"
+				v-text="form.errors.get('message')"></p>
+			</div>
+		</div>
+
+		<div class="clearfix"></div>
+
+		<div class="col-lg-12 text-center">
+			<div id="success"></div>
+			<button 
+			:disabled="form.errors.any()"
+			id="sendMessageButton"
+			class="btn btn-xl"
+			type="submit">
+			Send Message
+		</button>
+	</div>
+</div>
+</form>
+</template>
+
+<script>
+import Form from '../utilities/Form';
+
+export default {
+
+
+	components: { Form },
+
+	data() {
+		return {
+			form: new Form ({
+				name: '',
+				phone: '',
+				email: '',
+				message: '',
+			})
+
+		}
+	},
+
+	methods: {
+		onSubmit(){
+			this.form.post('/messages')
+			.then(response => alert('success'));
+			// .catch(response => alert('Failed'));
+		}
+	}
+}
+</script>
