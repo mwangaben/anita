@@ -23,3 +23,9 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+
+$factory->state(App\User::class, 'admin', [
+    'role' => 'admin'
+]);

@@ -36,7 +36,7 @@
     @include('sections.header') 
 
     <!-- Services -->
-    @include('sections.services')
+    @include('sections.events')
     <!-- Portfolio Grid -->
     @include('sections.portfolio')
 

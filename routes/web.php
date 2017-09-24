@@ -19,4 +19,9 @@ Route::get('home', function () {
     return view('layouts.master');
 });
 
+
 Route::resource('messages', 'ContactUsesController');
+
+
+
+Route::resource('about', 'AboutController');
