@@ -2,12 +2,14 @@
 
 namespace App;
 
+use App\Product;
+use App\MyTraits\Eventable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Eventable;
 
     /**
      * The attributes that are mass assignable.
@@ -27,20 +29,20 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function event()
+    public function products()
     {
-          return $this->hasMany(Event::class);
+          return $this->hasMany(Product::class);
     }
 
-    public function publishEvent($event)
+    public function createProduct($data)
     {
-          return $this->event()->create($event);
-    }
-    public function updateEvent($event)
-    {
-          return $this->event()->update($event);
+          return $this->products()->create($data);
     }
 
+    public function updateProduct($data)
+    {
+          return $this->products()->update($data);
+    }
 
 
 

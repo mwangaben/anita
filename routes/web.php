@@ -28,7 +28,7 @@ Route::resource('about', 'AboutController');
 
 Route::resource('events', 'EventsController');
 
-
+Route::resource('products', 'ProductsController');
 
 
 
