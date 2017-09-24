@@ -19,9 +19,25 @@ Route::get('home', function () {
     return view('layouts.master');
 });
 
-
+//Messages form contact us page
 Route::resource('messages', 'ContactUsesController');
 
 
-
+// Route for about page
 Route::resource('about', 'AboutController');
+
+Route::resource('events', 'EventsController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
