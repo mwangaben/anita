@@ -27,7 +27,7 @@ class ProductsTest extends TestCase
     /** @test **/
     public function the_admin_can_create_a_product()
     {
-        // $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
         $this->admin();
 
         $product = $this->product('make');

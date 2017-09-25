@@ -30,6 +30,8 @@ Route::resource('events', 'EventsController');
 
 Route::resource('products', 'ProductsController');
 
+Route::resource('challenges', 'ChallengesController');
+
 
 
 

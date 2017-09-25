@@ -3,13 +3,15 @@
 namespace App;
 
 use App\Product;
+use App\Challenge;
 use App\MyTraits\Eventable;
+use App\MyTraits\Productive;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, Eventable;
+    use Notifiable, Eventable, Productive;
 
     /**
      * The attributes that are mass assignable.
@@ -29,22 +31,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function products()
+
+    public function challenges()
     {
-          return $this->hasMany(Product::class);
+          return $this->hasMany(Challenge::class);
     }
 
-    public function createProduct($data)
+    public function createChallenge($data)
     {
-          return $this->products()->create($data);
+          return $this->challenges()->create($data);
     }
 
-    public function updateProduct($data)
+    public function updateChallenge($data)
     {
-          return $this->products()->update($data);
+         return  $this->challenges()->update($data);
     }
-
-
 
 
 }
