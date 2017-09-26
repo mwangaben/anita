@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Events</a>
+              <a class="nav-link js-scroll-trigger" href="#services">Challenges & Issues</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Products</a>
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Events</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
@@ -22,6 +22,11 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/auth">Login | Register</a>
+            </li>
+            
           </ul>
         </div>
       </div>

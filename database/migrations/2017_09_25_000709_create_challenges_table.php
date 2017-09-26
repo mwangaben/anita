@@ -21,6 +21,8 @@ class CreateChallengesTable extends Migration
             $table->string('image_url');
             $table->timestamps();
         });
+
+        
     }
 
     /**

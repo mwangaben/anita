@@ -17,8 +17,8 @@ class Product extends Model
     }
 
 
-    public function challenge()
+    public function challenges()
     {
-    	  return $this->belongsToMany(Challenge::class);
+    	  return $this->belongsToMany(Challenge::class, 'challenge_product');
     }
 }

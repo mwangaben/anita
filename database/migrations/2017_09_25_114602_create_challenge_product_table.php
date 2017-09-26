@@ -13,7 +13,7 @@ class CreateChallengeProductTable extends Migration
      */
     public function up()
     {
-        Schema::table('challenge_product', function (Blueprint $table) {
+        Schema::create('challenge_product', function (Blueprint $table) {
             $table->integer('challenge_id');
             $table->integer('product_id');
             $table->primary(['challenge_id', 'product_id']);
@@ -27,8 +27,6 @@ class CreateChallengeProductTable extends Migration
      */
     public function down()
     {
-        Schema::table('challenge_product', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('challenge_product');
     }
 }

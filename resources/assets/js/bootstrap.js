@@ -10,6 +10,7 @@ window._ = require('lodash');
 try {
 
   window.$ = window.jQuery = require('jquery');
+  window,jQuery use ()
 
   // import Popper from 'popper.js';
   window.Popper = Popper;
@@ -24,6 +25,8 @@ try {
  */
 
 window.Vue = require('vue');
+
+
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

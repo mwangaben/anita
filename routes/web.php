@@ -12,18 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('home', function () {
     return view('layouts.master');
 });
+
+
 
 //Messages form contact us page
 Route::resource('messages', 'ContactUsesController');
 
 
-// Route for about page
+Route::get('auth', function() {
+	return view('auth.register');
+});
+
 Route::resource('about', 'AboutController');
 
 Route::resource('events', 'EventsController');
@@ -32,6 +33,7 @@ Route::resource('products', 'ProductsController');
 
 Route::resource('challenges', 'ChallengesController');
 
+Route::resource('challengesproducts', 'ChallengeProductController');
 
 
 
@@ -43,3 +45,8 @@ Route::resource('challenges', 'ChallengesController');
 
 
 
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
