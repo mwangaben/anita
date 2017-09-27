@@ -80,8 +80,8 @@
 
     <!-- Plugin JavaScript -->
   </div>
-  <script src="{{ asset('js/app.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
  
   
   <!-- Contact form JavaScript -->
