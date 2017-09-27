@@ -13,6 +13,7 @@
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('css/agency.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
 
   <!-- Custom fonts for this template -->
