@@ -27,7 +27,7 @@
             @if (Auth::guest())
                 <li class="nav-item">
                     <a class="nav-link" 
-                    @click.prevent="$emit('toggleLoginForm')" 
+                    {{-- @click.prevent="$emit('toggleLoginForm')"  --}}
                     href="{{ route('login') }}">Login</a>
                 </li>
                 <li class="nav-item">

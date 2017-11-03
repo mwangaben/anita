@@ -1615,6 +1615,130 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/ContactUsForm.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utilities_Form__ = __webpack_require__("./resources/assets/js/utilities/Form.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	components: { Form: __WEBPACK_IMPORTED_MODULE_0__utilities_Form__["a" /* default */] },
+
+	data: function data() {
+		return {
+			form: new __WEBPACK_IMPORTED_MODULE_0__utilities_Form__["a" /* default */]({
+				name: '',
+				phone: '',
+				email: '',
+				message: ''
+			})
+
+		};
+	},
+
+
+	methods: {
+		onSubmit: function onSubmit() {
+			this.form.post('/messages').then(function (response) {
+				return alert('success');
+			});
+			// .catch(response => alert('Failed'));
+		}
+	}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Example.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -38060,6 +38184,176 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-374982a1\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/ContactUsForm.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('form', {
+    attrs: {
+      "id": "contactForm",
+      "name": "sentMessage"
+    },
+    on: {
+      "keydown": function($event) {
+        _vm.form.errors.clear($event.target.name)
+      },
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.onSubmit($event)
+      }
+    }
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.name),
+      expression: "form.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "id": "name",
+      "name": "name",
+      "type": "text",
+      "placeholder": "Your Name *"
+    },
+    domProps: {
+      "value": (_vm.form.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.name = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.form.errors.has('name')) ? _c('p', {
+    staticClass: "help-block text-danger",
+    domProps: {
+      "textContent": _vm._s(_vm.form.errors.get('name'))
+    }
+  }) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.email),
+      expression: "form.email"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "id": "email",
+      "name": "email",
+      "placeholder": "Your Email *"
+    },
+    domProps: {
+      "value": (_vm.form.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.email = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.form.errors.has('email')) ? _c('p', {
+    staticClass: "help-block text-danger",
+    domProps: {
+      "textContent": _vm._s(_vm.form.errors.get('email'))
+    }
+  }) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.phone),
+      expression: "form.phone"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "id": "phone",
+      "name": "phone",
+      "placeholder": "Your Phone *"
+    },
+    domProps: {
+      "value": (_vm.form.phone)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.phone = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.form.errors.has('phone')) ? _c('p', {
+    staticClass: "help-block text-danger",
+    domProps: {
+      "textContent": _vm._s(_vm.form.errors.get('phone'))
+    }
+  }) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.message),
+      expression: "form.message"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "name": "message",
+      "id": "message",
+      "cols": "30",
+      "rows": "10",
+      "placeholder": "Your message Goes here"
+    },
+    domProps: {
+      "value": (_vm.form.message)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.message = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.form.errors.has('message')) ? _c('p', {
+    staticClass: "help-block text-danger",
+    domProps: {
+      "textContent": _vm._s(_vm.form.errors.get('message'))
+    }
+  }) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "col-lg-12 text-center"
+  }, [_c('div', {
+    attrs: {
+      "id": "success"
+    }
+  }), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-xl",
+    attrs: {
+      "disabled": _vm.form.errors.any(),
+      "id": "sendMessageButton",
+      "type": "submit"
+    }
+  }, [_vm._v("\n\t\t\tSend Message\n\t\t")])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-374982a1", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-7f89f889\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Example.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48264,6 +48558,7 @@ window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
  */
 
 Vue.component('example', __webpack_require__("./resources/assets/js/components/Example.vue"));
+Vue.component('anita-contact-us', __webpack_require__("./resources/assets/js/components/ContactUsForm.vue"));
 
 var app = new Vue({
   el: '#app'
@@ -48331,6 +48626,47 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/ContactUsForm.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/ContactUsForm.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-374982a1\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/ContactUsForm.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/benedict/dev/anita/resources/assets/js/components/ContactUsForm.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] ContactUsForm.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-374982a1", Component.options)
+  } else {
+    hotAPI.reload("data-v-374982a1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/Example.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48369,6 +48705,265 @@ if (false) {(function () {
 
 module.exports = Component.exports
 
+
+/***/ }),
+
+/***/ "./resources/assets/js/utilities/Errors.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Errors = function () {
+    /**
+     * Create a new Errors instance.
+     */
+    function Errors() {
+        _classCallCheck(this, Errors);
+
+        this.errors = {};
+    }
+
+    /**
+     * Determine if an errors exists for the given field.
+     *
+     * @param {string} field
+     */
+
+
+    _createClass(Errors, [{
+        key: "has",
+        value: function has(field) {
+            return this.errors.hasOwnProperty(field);
+        }
+
+        /**
+         * Determine if we have any errors.
+         */
+
+    }, {
+        key: "any",
+        value: function any() {
+            return Object.keys(this.errors).length > 0;
+        }
+
+        /**
+         * Retrieve the error message for a field.
+         *
+         * @param {string} field
+         */
+
+    }, {
+        key: "get",
+        value: function get(field) {
+            if (this.errors[field]) {
+                return this.errors[field][0];
+            }
+        }
+
+        /**
+         * Record the new errors.
+         *
+         * @param {object} errors
+         */
+
+    }, {
+        key: "record",
+        value: function record(errors) {
+            this.errors = errors.errors;
+        }
+
+        /**
+         * Clear one or all error fields.
+         *
+         * @param {string|null} field
+         */
+
+    }, {
+        key: "clear",
+        value: function clear(field) {
+            if (field) {
+                delete this.errors[field];
+
+                return;
+            }
+
+            this.errors = {};
+        }
+    }]);
+
+    return Errors;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Errors);
+
+/***/ }),
+
+/***/ "./resources/assets/js/utilities/Form.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Errors__ = __webpack_require__("./resources/assets/js/utilities/Errors.js");
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var Form = function () {
+    /**
+     * Create a new Form instance.
+     *
+     * @param {object} data
+     */
+    function Form(data) {
+        _classCallCheck(this, Form);
+
+        this.originalData = data;
+
+        for (var field in data) {
+            this[field] = data[field];
+        }
+
+        this.errors = new __WEBPACK_IMPORTED_MODULE_0__Errors__["a" /* default */]();
+    }
+
+    /**
+     * Fetch all relevant data for the form.
+     */
+
+
+    _createClass(Form, [{
+        key: 'data',
+        value: function data() {
+            var data = {};
+
+            for (var property in this.originalData) {
+                data[property] = this[property];
+            }
+
+            return data;
+        }
+
+        /**
+         * Reset the form fields.
+         */
+
+    }, {
+        key: 'reset',
+        value: function reset() {
+            for (var field in this.originalData) {
+                this[field] = '';
+            }
+
+            this.errors.clear();
+        }
+
+        /**
+         * Send a POST request to the given URL.
+         * .
+         * @param {string} url
+         */
+
+    }, {
+        key: 'post',
+        value: function post(url) {
+            return this.submit('post', url);
+        }
+
+        /**
+         * Send a PUT request to the given URL.
+         * .
+         * @param {string} url
+         */
+
+    }, {
+        key: 'put',
+        value: function put(url) {
+            return this.submit('put', url);
+        }
+
+        /**
+         * Send a PATCH request to the given URL.
+         * .
+         * @param {string} url
+         */
+
+    }, {
+        key: 'patch',
+        value: function patch(url) {
+            return this.submit('patch', url);
+        }
+
+        /**
+         * Send a DELETE request to the given URL.
+         * .
+         * @param {string} url
+         */
+
+    }, {
+        key: 'delete',
+        value: function _delete(url) {
+            return this.submit('delete', url);
+        }
+
+        /**
+         * Submit the form.
+         *
+         * @param {string} requestType
+         * @param {string} url
+         */
+
+    }, {
+        key: 'submit',
+        value: function submit(requestType, url) {
+            var _this = this;
+
+            return new Promise(function (resolve, reject) {
+                axios[requestType](url, _this.data()).then(function (response) {
+                    _this.onSuccess(response.data);
+
+                    resolve(response.data);
+                }).catch(function (error) {
+                    _this.onFail(error.response.data);
+
+                    reject(error.response.data);
+                });
+            });
+        }
+
+        /**
+         * Handle a successful form submission.
+         *
+         * @param {object} data
+         */
+
+    }, {
+        key: 'onSuccess',
+        value: function onSuccess(data) {
+
+            this.reset();
+        }
+
+        /**
+         * Handle a failed form submission.
+         *
+         * @param {object} errors
+         */
+
+    }, {
+        key: 'onFail',
+        value: function onFail(errors) {
+            this.errors.record(errors);
+        }
+    }]);
+
+    return Form;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Form);
 
 /***/ }),
 

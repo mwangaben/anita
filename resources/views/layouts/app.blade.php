@@ -19,56 +19,9 @@
 <body>
     <div id="app">
         @include('layouts.partials.navigation') <!-- always -->
+        
 
-
-        <!-- Navigation -->
-    @include('sections.nav')
-    <div class="" v-if="Authication">
-    <!-- Header -->
-    @include('sections.header') 
-
-    <!-- Services -->
-    @include('sections.events')
-    <!-- Portfolio Grid -->
-    @include('sections.portfolio')
-
-    <!-- About -->
-    @include('sections.about')
-
-    <!-- Team -->
-    @include('sections.team')
-
-    <!-- Clients -->
-    @include('sections.clients')
-
-    <!-- Contact -->
-    @include('sections.contact')
-
-    <!-- Footer -->
-    @include('sections.footer')
-
-    <!-- Portfolio Modals -->
-
-    <!-- Modal 1 -->
-    @include('modals.modal_one')
-
-    <!-- Modal 2 -->
-    @include('modals.modal_two')
-
-    <!-- Modal 3 -->
-    @include('modals.modal_three')
-
-    <!-- Modal 4 -->
-    @include('modals.modal_four')
-
-    <!-- Modal 5 -->
-    @include('modals.modal_five')
-
-    <!-- Modal 6 -->
-    @include('modals.modal_six')
-</div>
-
-
+    
     @yield('content') <!-- depends on which route was called -->
     </div>
 
