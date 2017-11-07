@@ -44,7 +44,7 @@ class ContactUsesController extends Controller
 
         ContactUs::create($data);
 
-        return response(200);
+        return response(['success', 200]);
     }
 
     /**

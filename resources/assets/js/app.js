@@ -17,6 +17,8 @@ window.Vue = require('vue');
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('anita-contact-us', require('./components/ContactUsForm.vue'));
+Vue.component('anita-mock', require('./components/Mock.vue'));
+Vue.component('message', require('./components/Message.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -16,6 +16,7 @@ mix.autoload({
         'popper.js/dist/umd/popper.js': ['Popper']
     })
    .js('resources/assets/js/app.js', 'public/js')
+   .version()
    .styles(['resources/assets/css/agency.css', 'resources/assets/css/custom.css'], 'public/css/agency.css')
    .sass('resources/assets/sass/app.scss', 'public/css')
    .version();

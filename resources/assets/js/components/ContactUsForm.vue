@@ -71,7 +71,7 @@
 		<div class="clearfix"></div>
 
 		<div class="col-lg-12 text-center">
-			<div id="success"></div>
+			<div v-if="response.length > 0"  v-text="response" id="success"></div>
 			<button 
 			:disabled="form.errors.any()"
 			id="sendMessageButton"
@@ -99,7 +99,8 @@ export default {
 				phone: '',
 				email: '',
 				message: '',
-			})
+			}),
+			response: '',
 
 		}
 	},
@@ -107,8 +108,15 @@ export default {
 	methods: {
 		onSubmit(){
 			this.form.post('/messages')
-			.then(response => alert('success'));
-			// .catch(response => alert('Failed'));
+			.then(response => {
+				this.$emit('okay', response.data);
+			})
+			.catch(response => {
+				this.$emit('failed', response.data)
+			});
+		},
+		onSubmited(){
+			this.$emit('Okay')
 		}
 	}
 }
