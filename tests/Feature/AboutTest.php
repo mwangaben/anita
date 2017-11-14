@@ -2,35 +2,64 @@
 
 namespace Tests\Feature;
 
-use App\User;
 use App\About;
-use Tests\TestCase;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class AboutTest extends TestCase
 {
     use RefreshDatabase;
     /** @test **/
-    public function it_admin_can_update_about_page()
+    public function admin_can_update_about_page()
     {
         $admin = factory(User::class)->states('admin')->create();
 
         $this->actingAs($admin);
 
-        $content =  factory(About::class)->create();
-        
+        $about = factory(About::class)->create(['user_id' => auth()->id()]);
 
-        $this->assertDatabaseHas('users', ['name' => $admin->name]);
-        $data = ['quote' => 'be nice to me', 'title' => 'new Title', 'body' => 'Hello'];
-        
+        $data = [
+            'quote' => 'be nice to me',
+            'title' => 'new Title',
+            'body'  => 'Hello'
+        ];
 
-        $endpoint = 'about/'.$content->id;
-        $this->patch($endpoint, $data)
-             ->assertStatus(200);
+        $this->patch('/about/' . $about->id, $data)->assertStatus(200);
 
         $this->assertDatabaseHas('abouts', [
-             'title' => $data['title']
+            'title' => $data['title'],
 
-         ]);
+        ]);
+    }
+
+    /** @test **/
+    public function it_un_signed_in_user_can_not_update_the_about_page()
+    {
+        $about = factory(About::class)->create();
+        $data  = [
+            'quote' => 'be nice to me',
+            'title' => 'new Title',
+            'body'  => 'Hello',
+        ];
+
+        $this->patch('/about/' . $about->id, $data)->assertStatus(302);
+    }
+
+    /** @test **/
+    public function it_normal_user_can_not_update_the_about_page()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+
+        $about = factory(About::class)->create(['user_id' => auth()->id()]);
+        $data  = [
+            'quote' => 'be nice to me',
+            'title' => 'new Title',
+            'body'  => 'Hello',
+        ];
+
+        $this->patch('/about/' . $about->id, $data)->assertStatus(403);
+
     }
 }

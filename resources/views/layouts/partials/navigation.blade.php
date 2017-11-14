@@ -1,29 +1,19 @@
-{{-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-
-     <a class="navbar-brand" href="{{ url('/') }}">
-        {{ config('app.name') }}
-    </a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="mainNavbar">
-
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-        </ul>
-
-        <ul class="navbar-nav">
-            <!-- Authentication Links -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">Anita Mtui</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            
+            {{-- Authentication links --}}
             @if (Auth::guest())
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link" 
+                    {{-- @click.prevent="$emit('toggleLoginForm')"  --}}
+                    href="{{ route('login') }}">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">Register</a>
@@ -42,10 +32,14 @@
                     </div>
                 </li>
             @endif
-        </ul>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    </div>
-</nav>
- --}}
 
- @include('sections.nav')
+
+
+
+ {{-- @include('sections.nav') --}}

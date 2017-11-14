@@ -63,13 +63,13 @@ describe('WrapperMethods', () => {
 		expect(wrapper.hasProp('message', 'MwangaBen')).toBe(true);
 	});
 
-	it('it validate the props', () => {
-		let spy = jest.spyOn(console, 'error')
-		let cmp = wrapper.setProps({ message : 1 });
-		expect(spy).toBeCalledWith(expect.stringContaining('[Vue warn]: Missing required prop'))
+	// it('it validate the props', () => {
+	// 	let spy = jest.spyOn(console, 'error')
+	// 	let cmp = wrapper.setProps({ message : 1 });
+	// 	expect(spy).toBeCalledWith(expect.stringContaining('[Vue warn]: Missing required prop'))
 
-		spy.mockReset();
-	});
+	// 	spy.mockReset();
+	// });
 
 	it('the message String', () => {
 		const message = wrapper.vm.$options.props.message;

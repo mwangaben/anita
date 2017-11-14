@@ -8,7 +8,7 @@
     			</div>
     			<div class="container">
     				<div class="row">
-    					<div class="col-lg-8 mx-auto">
+    					<div class="col-lg-12 mx-auto">
     						<div class="modal-body">
     							<!-- Project Details Go Here -->
     							<h2>Project Name</h2>

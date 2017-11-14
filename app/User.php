@@ -48,4 +48,17 @@ class User extends Authenticatable
     }
 
 
+    public function abouts()
+    {
+          return $this->hasOne(About::class);
+    }
+
+    public function updateAbout($data)
+    {
+          return $this->abouts()->update($data);
+    }
+
+
+
+
 }

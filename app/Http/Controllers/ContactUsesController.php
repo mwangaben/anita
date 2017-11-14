@@ -38,7 +38,7 @@ class ContactUsesController extends Controller
         $data = $request->validate([
             'name'    => 'required',
             'phone'   => 'required',
-            'email'   => 'required',
+            'email'   => 'required|email',
             'message' => 'required',
         ]);
 

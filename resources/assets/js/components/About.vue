@@ -5,16 +5,29 @@
 			<div class="col-lg-12">
 				<h2 class="section-heading text-center">About</h2>
 				<h2 class="section-subheading text-center ">Editing Page</h2>
+				<form 
+				id="contactForm" 
+				name="sentMessage"
+				@keydown="form.errors.clear($event.target.name)" 
+				@submit.prevent="update">
 				<div class="form-group">
 					<label for="qoute">Quote:</label>
 					<input 
 					type="text" 
-					name="qoute" 
+					name="quote" 
 					id="quote" 
 					class="form-control"
 					placeholder="Qoute"
 					v-model="form.quote"
 					>
+
+
+					<p 
+					class="help-block text-danger"
+					v-if="form.errors.has('quote')"
+					v-text="form.errors.get('quote')"></p>
+
+
 				</div>
 				<div class="form-group">
 					<label for="title">Title:</label>
@@ -25,6 +38,12 @@
 					class="form-control" 
 					placeholder="title"
 					v-model="form.title">
+
+
+					<p 
+					class="help-block text-danger"
+					v-if="form.errors.has('title')"
+					v-text="form.errors.get('title')"></p>
 				</div>
 
 				<div class="form-group">
@@ -39,39 +58,51 @@
 					v-model="form.body" 
 					>	
 				</textarea>
+
+				<p 
+				class="help-block text-danger"
+				v-if="form.errors.has('body')"
+				v-text="form.errors.get('body')"></p>
 			</div>
 			<div class="form-group">
 				<button 
+				id="update" 
 				class="btn btn-primary" 
 				@click.prevent="update">Save Content</button>
-				<button class="btn btn-danger" @click.prevent="editing=false">Cancel Editing</button>
+				<button class="btn btn-info" @click.prevent="editing=false">Cancel Editing</button>
 			</div>
+		</form>
+	</div>
+</div>
+<div v-else>
+	<div class="row" v-for="data in datas">
+		<div class="col-lg-12 text-center">
+			<h2 class="section-heading">About</h2>
+			<h3 class="section-subheading text-muted">{{ data.quote }}</h3>
 		</div>
 	</div>
-	<div v-else>
-		<div class="row" v-for="data in datas">
-			<div class="col-lg-12 text-center">
-				<h2 class="section-heading">About</h2>
-				<h3 class="section-subheading text-muted">{{ data.quote }}</h3>
-			</div>
-		</div>
 
-		<div class="row" v-for="data in datas">
-			<div class="col-lg-4">
-				<h1>{{ data.title }}</h1>
-			</div>
-			<div class="col-lg-8">
-				<p>{{ data.body }}</p>
-			</div>
+	<div class="row" v-for="data in datas">
+		<div class="col-lg-4">
+			<h1>{{ data.title }}</h1>
 		</div>
-		<button class="btn btn-xs" @click.prevent="edit">Edit</button>
+		<div class="col-lg-8">
+			<p>{{ data.body }}</p>
+		</div>
 	</div>
+	<span v-if="isAdmin">
+	<button  id="edit" class="btn btn-info btn-xs" @click.prevent="edit">Edit Me</button>
+		
+	</span>
+</div>
 
 
 </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 import Form from '../utilities/Form';
 
 export default {
@@ -80,7 +111,13 @@ export default {
 	data() {
 		return {
 
-			datas: {},
+			datas: [{
+				quote : '',
+				title : '',
+				body : ''
+			}],
+			// myAdmin : this,
+			
 
 			form: new Form({
 				quote: '',
@@ -94,7 +131,19 @@ export default {
 
 	mounted(){
 		this.fetch()
-	}, 
+	},
+
+	computed: {
+
+		signedIn(){
+			return window.App.signedIn;
+		},
+
+		isAdmin(){
+			 return this.admin();
+		}
+	}
+	, 
 	methods:{
 		fetch(){
 			return  axios.get('/about')
@@ -103,42 +152,69 @@ export default {
 		},
 
 		edit(){
+			this.editing = true;
 			this.datas.forEach( function(element) {
 				this.form.quote = element.quote;
 				this.form.title = element.title;
 				this.form.body = element.body;
 				this.id = element.id;
 			}.bind(this));
-			this.editing = true;
 		},
 
 		update(){
 			return this.form.patch('/about/'+ this.id)
 			.then(response => this.onSuccess())
-			.catch(response => alert('Errors'));
+			// .then(response => {
+			// 	this.$emit('updated')
+			// 	this.fetch();
+			// 	this.editing = false;
+			// })
+			.catch(errors => this.$emit('failed', error));
 		},
 
 		onSuccess() {
-	 		// flash a message to the session
-	 		this.fetch();
-	 		this.editing = false;
-	 	}, 
+			this.$emit('updated')
+			this.fetch();
+			this.editing = false;
+		}, 
 
-	 }
+		chai(){
+			console.log('doneee')
+			// let self = this;
+			this.$emit('chad')
+			  axios.get('/about')
+			  .then(response => console.log('Done Done'))
 
+		
+
+			 
+		}
 
 	}
-	</script>
 
-	<style>
-	
-	.btn-primary{
-		background-color: #3e3e;
-	}
-	.btn-primary:hover{
-		background-color: green;
-	}
-	</style>
+
+}
+</script>
+
+<style>
+
+.btn-primary{
+	background-color: #3e3e;
+}
+.btn-primary:hover{
+	background-color: green;
+}
+
+.btn {
+	text-shadow: .1em .1em black;
+	font-style: italic;
+	border-radius: 1em;
+}
+
+.btn-nfo {
+	background-color: blue;
+}
+</style>
 
 
 

@@ -1,4 +1,6 @@
 <template>	
+
+	<!-- If the user has signed no need to fill the gaps -->
 	<form 
 	id="contactForm" 
 	name="sentMessage"
@@ -76,6 +78,7 @@
 			:disabled="form.errors.any()"
 			id="sendMessageButton"
 			class="btn btn-xl"
+			
 			type="submit">
 			Send Message
 		</button>
@@ -112,7 +115,7 @@ export default {
 				this.$emit('okay', response.data);
 			})
 			.catch(response => {
-				this.$emit('failed', response.data)
+				this.$emit('failed', response)
 			});
 		},
 		onSubmited(){

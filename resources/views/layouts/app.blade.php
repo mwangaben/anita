@@ -7,7 +7,6 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
@@ -18,15 +17,20 @@
 
 <body>
     <div id="app">
-        @include('layouts.partials.navigation') <!-- always -->
-        
+      @include('sections.nav')
 
     
-    @yield('content') <!-- depends on which route was called -->
+      @yield('content') 
     </div>
 
 
     <!-- Scripts -->
+     <script type="text/javascript">
+          window.App = {!! json_encode([
+            'signedIn' => Auth::check(),
+            'user'   => Auth::user()
+            ]) !!};
+     </script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

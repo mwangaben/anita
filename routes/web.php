@@ -12,7 +12,7 @@
  */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('index');
 });
 
 //Messages form contact us page
@@ -21,6 +21,7 @@ Route::resource('messages', 'ContactUsesController');
 Route::get('auth', function () {
     return view('auth.register');
 });
+Route::resource('/homesection', 'HomeSectionsController');
 
 Route::resource('mocks', 'MocksController');
 

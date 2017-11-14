@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
+    public function __construct()
+    {
+         $this->middleware('auth')->except(['index']); 
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return view('pages.about');
+
+        return About::all();
     }
 
     /**
@@ -69,14 +74,20 @@ class AboutController extends Controller
      */
     public function update(Request $request, About $about)
     {
+        // return auth()->user();
+        $this->authorize('update', $about);
+
+
         $data = $request->validate([
             'quote' => 'required',
             'title' => 'required',
             'body' => 'required'
         ]);
 
+
+
         // dd($data);
-        $about->update($data);
+        auth()->user()->updateAbout($data);
 
         return response(200);
     }

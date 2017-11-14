@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-	<!-- Navigation -->
-   {{--  @include('sections.nav') --}}
     <!-- Header -->
     @include('sections.header') 
 
@@ -17,8 +15,6 @@
     <!-- Team -->
     @include('sections.team')
 
-    <!-- Clients -->
-    @include('sections.clients')
 
     <!-- Contact -->
     @include('sections.contact')

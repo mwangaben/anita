@@ -1,16 +1,27 @@
 import {mount} from 'vue-test-utils';
 import ContactUsForm from '../../resources/assets/js/components/ContactUsForm.vue';
 import expect from 'expect';
+import Helpers from 'mwangaben-vthelpers';
+import moxios from 'moxios';
 
 
 describe('ContactUsForm', () => {
-       let wrapper;
+       let wrapper, b;
      beforeEach(() => {
+     	moxios.install();
+
         wrapper = mount(ContactUsForm);
+
+         b = new Helpers(wrapper, expect);
      });
 
+
+     afterEach(() => {
+     	moxios.uninstall();
+     })
+
 	it('it should have name field', () => {
-		expect(wrapper.contains('input#name')).toBe(true);
+		b.domHas('input#name')
 	});
 
 	it('it should have email field', () => {
@@ -25,32 +36,35 @@ describe('ContactUsForm', () => {
 		expect(wrapper.contains('textarea#message')).toBe(true);
 	});
 
-	it('it should receive the input', () => {
-		// type('input#name', 'Benedict');
-		// type('input#email', 'mwangaben@gmail.com');
-		// type('input#phone', '0717031351');
-		// type('textarea#message', 'Hello world');
+	it('it should receive the input', (done) => {
+		b.type('Benedict', 'input[name=name]');
+		b.type('mwangaben@gmail.com', 'input#email');
+		b.type('0717031351','input#phone',);
+		b.type('Hello world','textarea#message');
 
-		// expect(wrapper.vm.form.name).toContain('Benedict');
+		b.inputValueIs('Benedict','input#name');
 
-		// // console.log(wrapper.vm.form.errors);
-		// let submit = wrapper.find('#sendMessageButton');
-  //       expect(wrapper.contains('#sendMessageButton')).toBe(true);
-		//  submit.trigger('click');
-		 wrapper.vm.onSubmit();
-		 console.log(wrapper.emitted());
-		// expect(wrapper.emitted().submitted).toBeTruthy();
-		// expect(wrapper.emitted().failed).toBeTruthy();
+		moxios.stubRequest('/messages', {
+			   response : {
+			   		status : 200,
+			   		data: {
+			   			name : 'Mwangaben'
+			   		}
+			   		
+			   }
+		})
+
+		b.click('#sendMessageButton')
+		moxios.wait(() => {
+		 expect(wrapper.emitted().okay).toBeTruthy();
+
+			done()
+		})
+		// expect(wrapper.vm.emitted().okay).toBeTruthy();
 		// expect(wrapper.find('div#success').html()).toContain('success');
 
 
 	});
-
-	let type = (field, data) => {
-		let nameInput = wrapper.find(field);
-		nameInput.element.value = data;
-		nameInput.trigger('input');
-	}
 	
 });
 

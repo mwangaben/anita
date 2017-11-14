@@ -4,12 +4,15 @@ import {
 import MockingRequest from '../../resources/assets/js/components/MockingRequest.vue';
 import expect from 'expect';
 import moxios from 'moxios';
+import Helpers from 'mwangaben-vthelpers';
 
 
 describe('MockingRequest', () => {
-	moxios.install();
-	let wrapper;
+	let wrapper, b;
+	
 	beforeEach(() => {
+	 moxios.install();
+
 		wrapper = mount(MockingRequest, {
 			propsData: {
 				dataQuestion: {
@@ -18,6 +21,8 @@ describe('MockingRequest', () => {
 				}
 			}
 		});
+
+		b = new Helpers(wrapper, expect);
 	});
 
 	afterEach(() => {
@@ -25,18 +30,18 @@ describe('MockingRequest', () => {
 	})
 
 	it('it should have title and body', () => {
-		see('The title');
-		see('The body');
+		b.see('The title');
+		b.see('The body');
 	});
 
 	it('it can be edited', () => {
-		hasNot('input[name=title]');
-		hasNot('textearea[name=body]');
+		b.domHasNot('input[name=title]');
+		b.domHasNot('textearea[name=body]');
 
-		click('.edit');
+		b.click('.edit');
         
-        inputValue('The title', 'input[name=title]');
-        inputValue('The body', 'textarea[name=body]');
+        b.inputValueIs('The title', 'input[name=title]');
+        b.inputValueIs('The body', 'textarea[name=body]');
 
 	});
 
@@ -45,63 +50,48 @@ describe('MockingRequest', () => {
 		expect(wrapper.contains('.edit')).toBe(false);
 	});
 
-	it('it updates the question when the update is clicked', () => {
+	it('it updates the question when the update is clicked', (done) => {
 	
-		click('.edit');
+		b.click('.edit');
 
-		type('Changed title', 'input[name=title]');
-		type('Changed body', 'textarea[name=body]');
+        b.see('Update');
+        b.see('Cancel');
 
-		moxios.stubRequest('/questions/1',{
-  			status : 200,
-  			response: {
-  				title :  'Changed title',
-  				body  :  'Changed body',
-  			}
+		b.type('Changed title', 'input[name=title]');
+		b.type('Changed body', 'textarea[name=body]');
+
+		b.inputValueIs('Changed title', 'input[name=title]');
+
+		moxios.stubRequest("/questions", {
+			status : 200, 
+			response : {
+				title : 'The title',
+				body : 'The body'
+			}
 		});
 
-  		
+		b.click('#update');
 
-		click('.update');
-
-		see('Changed title');
-		see('Changed body');
+		b.see('Changed title');
+		b.see('Changed body');
+		moxios.wait(() => {
+			b.see('Your question has been updated');
+ 			done();
+		})
 	});
 
 	it('it can cancel the editing', () => {
-		click('.edit');
+		b.click('.edit');
 
-		type('Changed title', 'input[name=title]');
+		b.type('Changed title', 'input[name=title]');
 
-		click('.cancel');
+		b.click('.cancel');
 
-		see('The title');
+		b.see('The title');
 	});
 
 
 
-
-	function see(text, selector) {
-		let wrap = selector ? wrapper.find(selector) : wrapper;
-		expect(wrap.html()).toContain(text);
-	}
-
-	function hasNot(selector) {
-		expect(wrapper.contains(selector)).toBe(false);
-	}
-
-	function type(text, selector) {
-		let node = wrapper.find(selector);
-		node.element.value = text;
-		node.trigger('input');
-	}
-
-	function click(selector) {
-		wrapper.find(selector).trigger('click');
-	}
-
-	function inputValue(text , selector){
-		expect(wrapper.find(selector).element.value).toBe(text);
-	}
+	
 	
 });
