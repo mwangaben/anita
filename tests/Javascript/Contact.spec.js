@@ -46,26 +46,44 @@ describe('ContactUsForm', () => {
 
 		moxios.stubRequest('/messages', {
 			   response : {
-			   		status : 200,
+			   		response : 200,
 			   		data: {
-			   			name : 'Mwangaben'
+			   			name : 'Benedict'
 			   		}
 			   		
 			   }
 		})
 
 		b.click('#sendMessageButton')
-		moxios.wait(() => {
+		// wrapper.vm.$emit('okay');
+		 moxios.wait(() => {
+         // console.log(wrapper.emitted())
 		 expect(wrapper.emitted().okay).toBeTruthy();
-
-			done()
+		 done();
 		})
-		// expect(wrapper.vm.emitted().okay).toBeTruthy();
-		// expect(wrapper.find('div#success').html()).toContain('success');
+        
 
 
 	});
 	
+     it('it should show a form to the guest', () => {
+     	wrapper.setComputed({ signedIn : false})
+
+     	 b.domHas('.guest')
+     	 b.domHas('input[name=name]')
+     });
+
+     it('it present a form for a signed user', () => {
+     	 // wrapper.setComputed({ signedIn : true})
+     	 wrapper.setMethods({ signedIned : true});
+
+     	 b.domHas('.signed')
+     	 b.domHasNot('input[name=name]')
+
+     });
+
+
+
 });
 
 

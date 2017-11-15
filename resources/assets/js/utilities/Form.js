@@ -90,17 +90,17 @@ class Form {
      * @param {string} url
      */
     submit(requestType, url) {
+
         return new Promise((resolve, reject) => {
             axios[requestType](url, this.data())
                 .then(response => {
-                    this.onSuccess(response.data);
-
                     resolve(response.data);
+                    this.onSuccess(response.data);
                 })
                 .catch(error => {
+                    reject(error.response.data);
                     this.onFail(error.response.data);
 
-                    reject(error.response.data);
                 });
         });
     }
@@ -112,7 +112,6 @@ class Form {
      * @param {object} data
      */
     onSuccess(data) {
-
         this.reset();
     }
 

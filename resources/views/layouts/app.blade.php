@@ -24,13 +24,26 @@
     </div>
 
 
+    @if (Auth::check())
     <!-- Scripts -->
      <script type="text/javascript">
           window.App = {!! json_encode([
             'signedIn' => Auth::check(),
-            'user'   => Auth::user()
+            'admin'   => Auth::user()->admin()
             ]) !!};
      </script>
+
+
+     @else
+     
+       <script type="text/javascript">
+          window.App = {!! json_encode([
+            'signedIn' => false,
+            'admin'   => false
+            ]) !!};
+     </script>
+
+    @endif
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

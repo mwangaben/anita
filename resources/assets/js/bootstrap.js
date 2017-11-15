@@ -31,12 +31,15 @@ Vue.prototype.authorize = function(handler) {
 	return handler(window.App.user);
 };
 
+Vue.prototype.loggedIn = function(){
+     return window.App.signedIn;
+}
 
 Vue.prototype.admin = function(){
-   let user = window.App.user;
+   let admin = window.App.admin;
    let signedIn = window.App.signedIn;
    if(signedIn){
-   	return user.role == 'admin' ? true : false;	
+   	return admin ? true : false;	
    	  
    }else{
    		return false;	

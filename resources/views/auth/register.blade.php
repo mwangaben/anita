@@ -38,6 +38,21 @@
                     </div>
                 </div>
 
+
+                <div class="form-group row">
+                    <label for="phone" class="col-md-4 col-form-label">Phone Number</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" id="phone" value="{{ old('phone') }}" required>
+
+                        @if ($errors->has('phone'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('phone') }}</strong>
+                            </span>
+                        @endif
+
+                    </div>
+                </div>
+
                 <div class="form-group row">
                     <label for="password" class="col-md-4 col-form-label">Password</label>
                     <div class="col-md-8">

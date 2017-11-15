@@ -168,7 +168,9 @@ export default {
 	.btn-nfo {
 		background-color: blue;
 	}
-
+	header.masthead{
+		margin-top: -1.4em;
+	}
 	.btn {
 		text-shadow: .1em .1em black;
 		font-style: italic;

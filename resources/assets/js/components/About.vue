@@ -9,7 +9,8 @@
 				id="contactForm" 
 				name="sentMessage"
 				@keydown="form.errors.clear($event.target.name)" 
-				@submit.prevent="update">
+				
+				>
 				<div class="form-group">
 					<label for="qoute">Quote:</label>
 					<input 
@@ -116,7 +117,6 @@ export default {
 				title : '',
 				body : ''
 			}],
-			// myAdmin : this,
 			
 
 			form: new Form({
@@ -136,11 +136,11 @@ export default {
 	computed: {
 
 		signedIn(){
-			return window.App.signedIn;
+			return this.loggedIn;
 		},
 
 		isAdmin(){
-			 return this.admin();
+			 return this.signedIn ? this.admin : false;
 		}
 	}
 	, 
@@ -162,33 +162,22 @@ export default {
 		},
 
 		update(){
-			return this.form.patch('/about/'+ this.id)
-			.then(response => this.onSuccess())
-			// .then(response => {
-			// 	this.$emit('updated')
-			// 	this.fetch();
-			// 	this.editing = false;
-			// })
-			.catch(errors => this.$emit('failed', error));
+
+			this.form.patch('/about/'+ this.id)
+			.then(response => {
+				this.$emit('updated')
+				this.fetch();
+				this.editing = false;
+			})
+			.catch(errors => this.$emit('failed', errors));
 		},
 
 		onSuccess() {
 			this.$emit('updated')
+			console.log('A done')
 			this.fetch();
 			this.editing = false;
-		}, 
-
-		chai(){
-			console.log('doneee')
-			// let self = this;
-			this.$emit('chad')
-			  axios.get('/about')
-			  .then(response => console.log('Done Done'))
-
-		
-
-			 
-		}
+		} 
 
 	}
 
